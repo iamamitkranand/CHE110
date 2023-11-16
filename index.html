@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Electricity Hub | CHE110</title>
+
+  </head>
+  <body>
+    <nav>
+      <div class="nav__logo">Electricity<span>Hub</span></div>
+      <ul class="nav__links">
+        <li class="link"><a href="#">Home</a></li>
+        <li class="link"><a href="#">Calculator</a></li>
+        <li class="link"><a href="#">Tips</a></li>
+      </ul>
+    </nav>
+    <header>
+      <div class="section__container header__container">
+        <div class="header__image">
+          <img src="Asset\Home_1.jfif" alt="header" />
+          <img src="Asset\Home_2.jfif" alt="header" />
+        </div>
+        <div class="header__content">
+          <div>
+            <h1>Join us on a journey to save Electricity.</h1>
+            <p class="section__subtitle">
+              Explore our website for more in-depth guides, 
+              resources, and tools to make your home or business more energy-efficient.
+              Let's create a greener, cleaner, and cost-effective future together!
+            </p>
+            <div class="action__btns">
+              <button class="btn">Explore</button>
+              <div class="story">
+                <div class="video__image">
+                  <img src="Asset\Home_3.jfif" alt="story" />
+                  <span><i class="ri-play-fill"></i></span>
+                </div>
+                <span>Electricity Saving Tips.</span>
+                <!-- https://www.youtube.com/watch?v=EB9I2Wp7stg -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="gallary">
+      <div class="section__container gallary__container">
+        <div class="image__gallary">
+          <div class="gallary__col">
+            <img src="Asset\Solar_1.jfif" alt="gallary" />
+          </div>
+          <div class="gallary__col">
+            <img src="Asset\Solar_2.jpg" alt="gallary" />
+            <img src="Asset\Solar_3.jpg" alt="gallary" />
+          </div>
+        </div>
+        <div class="gallary__content">
+          <div>
+            <h2 class="section__title">
+              Harness the power of the sun and embrace a brighter future with solar energy!
+            </h2>
+            <p class="section__subtitle">
+              Remember, every small step towards solar energy adoption makes
+               a big difference in creating a cleaner and brighter world for all. 
+               Start harnessing the power of the sun and embrace the benefits of solar energy! 🌞💚
+            </p>
+            <a href="https://solarrooftop.gov.in/" target="_blank"><button class="btn">Apply Now</button></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- Electricity Usage Calculator -->
+    <section class="trip" >
+      <div class="section__container trip__container">
+        <h2 class="section__title">Monthly Electricity Usage Calculator</h2>
+        <p class="section__subtitle">
+          Our electricity usage calculator is designed to help you gain
+          insights into your energy consumption by entering relevant information.
+        </p>
+      </div>
+    <div class="style" style="text-align: left;margin-left: 200px;margin-right: 200px;padding: 70px 90px 70px 90px;">
+
+      <form id="usagePredictionForm">
+        <label for="previousUsage">Previous Month's Usage (kWh):</label>
+        <input type="number" id="previousUsage" required><br><br>
+        
+        <label for="numberOfPeople">Number of People in the Household:</label>
+        <input type="number" id="numberOfPeople" required ><br><br>
+        
+        <label for="averageTemperature">Average Temperature (°C):</label>
+        <input type="number" id="averageTemperature" required><br><br>
+
+        <div class="view__all">
+          <input class="btn" type="submit" value="Predict Usage">
+        </div>
+      </form><br>
+    
+      <div id="predictionResult">Waiting for inputs....</div>
+    </div>
+  </section>
+
+  <script>
+      document.getElementById('usagePredictionForm').addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          // Get input values
+          const previousUsage = parseFloat(document.getElementById('previousUsage').value);
+          const numberOfPeople = parseFloat(document.getElementById('numberOfPeople').value);
+          const averageTemperature = parseFloat(document.getElementById('averageTemperature').value);
+
+          // Perform prediction calculation (you can replace this with your prediction algorithm)
+          const predictedUsage = calculatePrediction(previousUsage, numberOfPeople, averageTemperature);
+
+          // Display the prediction result
+          const predictionResult = document.getElementById('predictionResult');
+          predictionResult.innerHTML = `<p>Predicted Monthly Electricity Usage: ${predictedUsage.toFixed(2)} kWh</p>`;
+      });
+
+      // Sample prediction algorithm (you can replace this with your own)
+      function calculatePrediction(previousUsage, numberOfPeople, averageTemperature) {
+          // Replace this with your prediction logic
+          // For simplicity, let's assume a basic linear prediction here
+          const baseUsage = 100; // kWh
+          const usagePerPerson = 50; // kWh per person
+          const usagePerDegree = 10; // kWh per degree
+          const predictedUsage = baseUsage + numberOfPeople * usagePerPerson - averageTemperature * usagePerDegree;
+          return predictedUsage;
+      }
+  </script>
+  </div>
+
+<!-- Electricity Usage Calculator -->
+
+
+<!-- Carbon footprint Tracker -->
+
+    <section class="trip">
+      <div class="section__container trip__container">
+        <h2 class="section__title">Carbon Footprint Tracker</h2>
+        <p class="section__subtitle">
+          Allows users to input their monthly electricity usage, gas usage, and yearly travel distance.
+          It then calculates the carbon footprint based on these inputs using predefined emission factors
+          for electricity, gas, and travel.
+        </p>
+      </div>
+
+      <div class="style" style=" text-align: left;margin-left: 200px;margin-right: 200px;padding: 70px 90px 70px 90px;">
+        
+        <label for="electricity">Electricity Usage (kWh/month):</label>
+        <input type="number" id="electricity" min="0"><br><br>
+        
+        <label for="gas">Gas Usage (m³/month):</label>
+        <input type="number" id="gas" min="0"><br><br>
+        
+        <label for="travel">Travel (km/year):</label>
+        <input type="number" id="travel" min="0"><br><br>
+        
+        <div class="view__all"> 
+          <button class="btn" onclick="calculateCarbonFootprint()">Calculate</button>
+        </div><br>
+        
+        <div class="result" id="result">Waiting for inputs....</div>
+      </div>
+    </section>
+  
+    <script>
+      function calculateCarbonFootprint() {
+        var electricityUsage = parseFloat(document.getElementById("electricity").value);
+        var gasUsage = parseFloat(document.getElementById("gas").value);
+        var travelDistance = parseFloat(document.getElementById("travel").value);
+        
+        var carbonFootprint = (electricityUsage * 0.5) + (gasUsage * 2.3) + (travelDistance * 0.15);
+        
+        document.getElementById("result").innerHTML = "Your estimated carbon footprint is " + carbonFootprint.toFixed(2) + " tonnes CO2e per year.";
+      }
+    </script>
+
+<!-- Carbon footprint Tracker -->
+
+<!-- case study -->
+
+    <!-- Case Study i -->
+    <section class="trip">
+      <div class="section__container trip__container">
+        <h2 class="section__title">CASE STUDY I</h2>
+        <h1 class="section__subtitle">Analysis of electricity consumption behavioue:
+          case study of non-business and business household in malag city.</h1><br>
+        <object data="Case Study\Analysis_of_Electricity_Consumption_Behaviour_Case.pdf" type="application/pdf" width="100%" height="500px"></object>
+      </div>
+    </section>
+
+    <!-- Case Study ii -->
+    <section class="trip">
+      <div class="section__container trip__container">
+        <h2 class="section__title">CASE STUDY II</h2>
+          <h1 class="section__subtitle">A Case Study on Household Electricity Uses and
+            Their Variations Due to Occupant Behavior in
+            Chinese Apartments in Beijing.</h1><br>
+        <object data="Case Study\A Case Study on Household Electricity Uses and Their Variations Due to Occupant Behavior in Chinese Apartments in Beijing.pdf" type="application/pdf" width="100%" height="500px"></object>
+      </div>
+    </section>
+
+<!-- case study -->
+
+    <!-- <section class="trip">
+      <div class="section__container trip__container">
+        <h2 class="section__title">Best trip package</h2>
+        <p class="section__subtitle">
+          Explore your suitable and dream places around the world. Here you can
+          find your right destination.
+        </p>
+        <div class="trip__grid">
+          <div class="trip__card">
+            <img src="assets/trip-1.jpg" alt="trip" />
+            <div class="trip__details">
+              <p>Wasserwerk Frelberg, Germany</p>
+              <div class="rating"><i class="ri-star-fill"></i> 4.2</div>
+              <div class="booking__price">
+                <div class="price"><span>From</span> $300</div>
+                <button class="book__now">Book Now</button>
+              </div>
+            </div>
+          </div>
+          <div class="trip__card">
+            <img src="assets/trip-2.jpg" alt="trip" />
+            <div class="trip__details">
+              <p>Patagonia, Argentina and Chile</p>
+              <div class="rating"><i class="ri-star-fill"></i> 4.5</div>
+              <div class="booking__price">
+                <div class="price"><span>From</span> $450</div>
+                <button class="book__now">Book Now</button>
+              </div>
+            </div>
+          </div>
+          <div class="trip__card">
+            <img src="assets/trip-3.jpg" alt="trip" />
+            <div class="trip__details">
+              <p>The Dolomites, Italy</p>
+              <div class="rating"><i class="ri-star-fill"></i> 4.7</div>
+              <div class="booking__price">
+                <div class="price"><span>From</span> $400</div>
+                <button class="book__now">Book Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="view__all">
+          <button class="btn">View All</button>
+        </div>
+      </div>
+    </section> -->
+
+    
+
+    <section class="subscribe">
+      <div class="section__container subscribe__container">
+        <div class="subscribe__content">
+          <h2 class="section__title">Send message or email for any query.</h2>
+        </div>
+        <div class="subscribe__form">
+          <form>
+            <input type="email" placeholder="Your email here" />
+            <button class="btn" type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="section__container footer__container">
+        <div class="footer__col">
+          <h3>Electricity<span>Hub</span></h3>
+          <p>
+            Join us on a journey to save Electricity.
+          </p>
+        </div>
+        <div class="footer__col">
+          <h4>TEAM</h4>
+          <p>Amit Kumar Anand</p>
+          <p>Mausam Kumari</p>
+          <p>Vansh Rajput</p>
+        </div>
+        <div class="footer__col">
+          <h4>Address</h4>
+          <p>
+            <span>Address:</span> Lovely Professional University, Phagwara, Punjab, India
+          </p>
+          <p><span>Email:</span> info@electricityhub.com</p>
+          <p><span>Phone:</span> +91 0000000000</p>
+      </div>
+    </footer>
+  </body>
+</html>
